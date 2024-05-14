@@ -25,9 +25,8 @@ jobs:
     - name: Step 3 Execute collection
       run: newman run ./Chips.postman_environment.json -e ./Users.postman_collection.json -e ./workspace.postman_globals.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/Report.html
 
-    - name: Step 4 Archive production artifact
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v3
+    - name: Step 4 Archive production artifacts
+      uses: actions/upload-artifact@v2
       with:
-        name: postman-results
-        path: ./results
+          name: report
+          path: ./results/Report.html
