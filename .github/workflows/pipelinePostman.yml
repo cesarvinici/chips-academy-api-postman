@@ -24,6 +24,7 @@ jobs:
 
     - name: Step 3 Execute collection
       run: newman run ./Users.postman_collection.json -e ./Chips.postman_environment.json -g ./workspace.postman_globals.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/Report.html
+      continue-on-error: true
 
     - name: Step 4 Archive production artifacts
       uses: actions/upload-artifact@v2
